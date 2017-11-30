@@ -1,0 +1,494 @@
+@font-face {
+    font-family: "Ubuntu Light";
+    src: url("../fonts/ubuntu_light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Ubuntu Medium";
+    src: url("../fonts/ubuntu_medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Ubuntu Regular";
+    src: url("../fonts/ubuntu_regular.woff") format("woff");
+}
+
+body {
+    font-family: "Ubuntu Regular";
+    background: #FFFFFF;
+}
+
+a {
+    color: #ffbc00;
+    transition: all .5s;
+}
+
+a:hover {
+    color: #f7a100;
+}
+
+h1 {
+    font-family: "Ubuntu Medium";
+    font-size: 24px;
+    color: #393939;
+    margin: 0;
+    padding: 0;
+}
+
+h1 a {
+    font-family: "Ubuntu Medium";
+    font-size: 24px;
+    color: #393939 !important;
+    margin: 0;
+    padding: 0;
+}
+
+h1 a:hover {
+    text-decoration: none
+}
+
+h2 {
+    font-family: "Ubuntu Medium";
+    font-size: 18px;
+    color: #393939;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-family: "Ubuntu Medium";
+    font-size: 16px;
+    color: #393939;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    font-family: "Ubuntu Light";
+    font-size: 15px;
+    color: #393939;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.aligncenter {
+    display: block;
+    margin: auto;
+}
+
+header#header {
+    height: 50px;
+    background: #393939;
+    border-bottom: solid 1px #b9b9b9;
+}
+
+header#header .navbar-brand {
+    text-indent: -1000px;
+    overflow: hidden;
+    height: 50px;
+    width: 108px;
+    background: url(../img/logo.png) 0 10px no-repeat !important;
+    margin-right: 14px;
+
+}
+
+header#header ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+header#header ul li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: relative;
+}
+
+header#header a {
+    background: transparent !important;
+    color: #d5d5d5;
+}
+
+header#header a:hover {
+    color: #ffbb00;
+}
+
+header#header ul.nav > li > .sub-menu {
+    border-radius: 6px;
+    width: 200px;
+    position: absolute;
+    padding-top: 14px;
+    display: none;
+    z-index: 1000;
+}
+
+header#header ul.nav > li {
+
+    border-left: solid 1px #474747;
+    border-right: solid 1px #393939;
+
+}
+
+header#header ul.nav > li:last-child {
+
+    border-right: solid 1px #474747;
+
+}
+
+header#header ul.nav {
+
+    border-left: solid 1px #393939;
+
+}
+
+header#header ul.nav > li:hover > .sub-menu {
+    display: block;
+
+}
+
+header#header ul.nav > li > .sub-menu > li:first-child {
+    border-top: solid 1px #d6d6d6;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+header#header ul.nav > li > .sub-menu > li:last-child {
+    border-bottom: solid 1px #d6d6d6;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+header#header ul.nav > li > .sub-menu > li {
+    border-left: solid 1px #d6d6d6;
+    border-right: solid 1px #d6d6d6;
+    background: #FFFFFF;
+}
+
+header#header ul.nav > li > .sub-menu a {
+    padding: 14px;
+    display: block;
+    text-decoration: none;
+    color: #393939;
+}
+
+header#header ul.nav > li > .sub-menu a:hover {
+    color: #FFFFFF;
+    background: #ffbb00 !important;
+}
+
+header#header ul.nav > li > .sub-menu .disabled a {
+    color: #a6a6a6;
+    cursor: auto;
+}
+
+header#header ul.nav > li > .sub-menu .disabled a:hover {
+    color: #a6a6a6;
+    background: transparent !important;
+}
+
+header#header ul.nav > li > .sub-menu > li > .sub-menu a {
+    color: #393939;
+}
+
+header#header ul.nav > li > .sub-menu > li > .sub-menu a:hover {
+    color: #FFFFFF;
+    background: #ffbb00 !important;
+}
+
+header#header ul.nav.navbar-right a {
+    font-size: 12px;
+    padding: 6px 12px;
+    text-align: center;
+}
+
+header#header ul.nav.navbar-right a:before {
+    display: block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 5px;
+}
+
+header#header ul.nav.navbar-right .icon-blog a:before {
+    content: "\f133";
+}
+
+header#header ul.nav.navbar-right .icon-board a:before {
+    content: "\f0e6";
+}
+
+header#header ul.nav.navbar-right .icon-search a:before {
+    content: "\f002";
+}
+
+#breadcrumb {
+    background: #ededed;
+    color: #8d8d8d;
+    border-top: solid 1px #d3d3d3;
+    padding: 7px 14px 7px 14px;
+}
+
+#breadcrumb a {
+    color: #8d8d8d;
+}
+
+#breadcrumb .item {
+    display: inline-block;
+}
+
+#breadcrumb .item:after {
+    content: ">";
+    margin: 0 7px;
+}
+
+#breadcrumb .item:last-child:after {
+    content: "";
+    margin: 0;
+}
+
+main#main {
+    min-height: 1000px;
+    padding: 14px 0 14px 0;
+}
+
+main#main #sidebar {
+    background: #f7f7f7;
+    padding: 14px;
+    margin-top: 14px;
+}
+
+main#main #sidebar h2 {
+    margin-bottom: 14px;
+}
+
+main#main #sidebar ul {
+    list-style-type: none;
+}
+
+main#main #sidebar ul li {
+    list-style-type: none;
+}
+
+main#main #sidebar > ul > li {
+    margin-bottom: 28px;
+}
+
+main#main #page .page-content h2 {
+    margin-bottom: 7px;
+    margin-top: 14px;
+}
+
+main#main #games article {
+    margin-top: 28px;
+    border-radius: 6px;
+    position: relative;
+}
+
+main#main #games article .game-title i.fa {
+    color: #ffbb00;
+}
+
+main#main #games article .game-metas {
+    margin-bottom: 14px;
+}
+
+main#main #games article .game-metas .developer {
+    color: #c1c1c1;
+    margin-left: 35px;
+}
+
+main#main #games article .game-metas .developer a {
+    margin-right: 7px;
+}
+
+main#main #games article img {
+    border-radius: 6px;
+    width: 100%;
+    height: auto;
+}
+
+main#main #games article .game-content h2 {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+
+
+main#main #games article .game-content .details {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+main#main #games article .game-content .details .row {
+    padding: 7px;
+    color: #b1b1b1;
+}
+
+main#main #games article .game-content .details .row a {
+    margin-right: 7px;
+}
+
+main#main #games article .game-content .details .row:nth-child(even) {
+    background: #f7f7f7;
+}
+
+main#main #games.games article .game-content h2 {
+    color: #ffbb00;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+main#main #games.games article:hover .game-content {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}
+
+main#main #games.games article .game-content {
+    background: rgba(0, 0, 0, 0);
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transition: all .5s;
+    color: #FFFFFF;
+    padding: 7px;
+}
+
+main#main #games.games article .game-content a {
+    color: #FFFFFF;
+    margin-right: 7px,
+}
+
+main#main #games article:nth-child(2) {
+    margin-top: 14px;
+}
+
+main#main #blog article {
+    margin-top: 70px;
+}
+
+main#main #blog article:nth-child(2) {
+    margin-top: 14px;
+}
+
+main#main #blog article .article-header {
+    background: #e9e9e9;
+    border-left: solid 14px #fbb919;
+    padding: 14px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    height: 70px;
+}
+
+main#main #blog article .article-header .article-metas {
+    clear: left;
+}
+
+main#main #blog article .article-header .article-metas .date {
+    color: #b2b2b2;
+    display: inline-block;
+    margin-right: 14px;
+}
+
+main#main #blog article .article-header .article-metas .date i {
+    margin-right: 7px;
+}
+
+main#main #blog article .article-header .article-metas .categories {
+    color: #b2b2b2;
+    display: inline-block;
+
+}
+
+main#main #blog article .article-header .article-metas .categories i {
+    margin-right: 7px;
+}
+
+main#main #blog article .article-header .article-metas .categories ul {
+    display: inline-block;
+}
+
+main#main #blog article .article-header .article-metas .categories li {
+    display: inline-block;
+    list-style-type: none;
+}
+
+main#main #blog article .article-header .article-metas .categories li:after {
+    content: "-";
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+main#main #blog article .article-header .article-metas .categories li:last-child:after {
+    content: "";
+    margin-left: 0;
+    margin-right: 0;
+}
+
+main#main #blog article .article-body {
+    padding: 14px;
+}
+
+main#main #blog article .article-footer {
+    background: #f7f7f7;
+    padding: 14px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    text-align: right;
+    color: #b2b2b2;
+}
+
+main#main #blog article .article-footer a {
+    color: #b2b2b2;
+}
+
+main#main #blog .pagination {
+    margin: 14px 0 14px 0;
+    padding: 0;
+}
+
+main#main #blog .pagination h2 {
+    display: none;
+}
+
+main#main #blog .pagination span {
+    color: #FFFFFF;
+    background: #ffbb00 !important;
+    padding: 7px;
+    margin-right: 7px;
+}
+
+main#main #blog .pagination a {
+    border: solid 1px #e9eae9;
+    padding: 7px;
+    margin-right: 7px;
+    color: #393939;
+}
+
+footer#footer {
+    background: #393939;
+}
+
+footer#footer p {
+    font-family: "Ubuntu Light";
+    font-size: 12px;
+    color: #D5D5D5;
+}
+
+footer#footer h2 {
+    font-family: "Ubuntu Light";
+    font-size: 12px;
+    color: #8d8d8d;
+}
