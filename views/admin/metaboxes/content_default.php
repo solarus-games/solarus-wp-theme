@@ -9,10 +9,10 @@
             <div id="tab-<?php echo $language->ID;?>">
                 <?php if (Core::get_post_meta('_code', $language->ID) == get_locale()):?>
                     <p class="post-attributes-label-wrapper">
-                        <label for="post_title" class="post-attributes-label"><?php echo __("Titre : ", "solarus");?></label>
+                        <label for="title_<?php echo Core::get_post_meta('_code', $language->ID);?>" class="post-attributes-label"><?php echo __("Titre : ", "solarus");?></label>
                     </p>
                     <div>
-                        <input type="text" name="post_title" id="post_title" class="regular-text" value="<?php echo $post->post_title;?>"/>
+                        <input type="text" name="title_<?php echo Core::get_post_meta('_code', $language->ID);?>" id="title_<?php echo Core::get_post_meta('_code', $language->ID);?>" class="regular-text" value="<?php echo Core::get_post_meta('_title_' . Core::get_post_meta('_code', $language->ID), $post->ID);?>"/>
                     </div>
                     <?php wp_editor($post->post_content, 'content');?>
                 <?php else :?>
