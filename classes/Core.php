@@ -31,6 +31,7 @@ class Core
         $this->register_menus();
         $this->register_sidebars();
         load_default_textdomain();
+        //show_admin_bar(false);
 
     } //EOM
 
@@ -1100,11 +1101,7 @@ class Core
 
     public function unregister_fields()
     {
-
-        remove_post_type_support('game', 'title');
-        remove_post_type_support('game_page', 'title');
-        remove_post_type_support('page', 'title');
-        remove_post_type_support('post', 'title');
+        
         remove_post_type_support('game', 'editor');
         remove_post_type_support('game_page', 'editor');
         remove_post_type_support('page', 'editor');

@@ -10,11 +10,11 @@
         <?php if (is_page()):?>
             <?php if ($post->post_parent > 0):?>
                 <div class="item">
-                    <a href="<?php echo get_the_permalink($post->post_parent);?>" title="<?php echo get_the_title($post->post_parent);?>"><?php echo get_the_title($post->post_parent);?></a>
+                    <a href="<?php echo get_the_permalink($post->post_parent);?>" title="<?php echo Core::get_title($post->post_parent);?>"><?php echo Core::get_title($post->post_parent);?></a>
                 </div>
             <?php endif;?>
             <div class="item">
-                <?php the_title();?>
+                <?php echo Core::get_title();?>
             </div>
         <?php endif;?>
         <?php if (is_archive()):?>
@@ -27,7 +27,7 @@
                 <a href="<?php echo get_post_type_archive_link($post->post_type);?>" title="<?php echo Core::get_archive_name($post->post_type);?>"><?php echo Core::get_archive_name($post->post_type);?></a>
             </div>
             <div class="item">
-                <?php the_title();?>
+                <?php echo Core::get_title();?>
             </div>
         <?php endif;?>
     <?php endif;?>

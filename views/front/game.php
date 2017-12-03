@@ -1,5 +1,5 @@
 <article>
-    <a title="<?php the_title();?>" href="<?php the_permalink();?>">
+    <a title="<?php Core::get_title();?>" href="<?php the_permalink();?>">
         <?php the_post_thumbnail();?>
     </a>
     <div class="game-content">
