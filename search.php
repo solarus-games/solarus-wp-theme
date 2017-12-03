@@ -1,3 +1,3 @@
 <?php get_header();?>
-Search
+<?php echo Core::get_view_games();?>
 <?php get_footer();?>
