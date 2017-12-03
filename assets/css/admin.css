@@ -1,0 +1,66 @@
+.clearfix {
+    clear: left;
+}
+
+.solarus-preview {
+    padding: 10px;
+    background: #EEEEEE;
+    border: solid 1px #CCCCCC;
+    color: #333333;
+}
+
+.solarus-preview h1 {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #DDDDDD;
+    padding: 10px;
+}
+
+.tabs {
+    float: left;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.tabs ul {
+    margin: 0;
+    padding: 0;
+}
+
+.tabs li {
+    padding-right: 30px;
+    float: left;
+    width: 200px;
+}
+
+.tabs li a {
+    background: #EEEEEE;
+    padding: 10px;
+    text-decoration: none;
+    float: left;
+    width: 100%;
+    box-shadow: none;
+    border: solid 1px #CCCCCC;
+    color: #000000;
+}
+
+.tabs li.ui-state-active a {
+    font-weight: bold;
+    border: solid 1px #BBBBBB;
+}
+
+.tabs .ui-tabs-panel {
+    float: left;
+    width: 100%;
+}
+
+
+/* Tinymce */
+#wp-content-editor-tools {
+    background: transparent;
+}
+
+.wp-editor-tools {
+    padding-top: 20px;
+}

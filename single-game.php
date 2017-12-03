@@ -5,7 +5,7 @@
             <article>
                 <div class="game-header">
                     <div class="game-title">
-                        <h1><i class="fa fa-gamepad"></i> <a title="<?php the_title();?>" href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+                        <h1><i class="fa fa-gamepad"></i> <a title="<?php echo Core::get_title($post);?>" href="<?php the_permalink();?>"><?php echo Core::get_title($post);?></a></h1>
                     </div>
                     <div class="game-metas">
                         <div class="developer"><?php echo Core::get_terms('developer');?></div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="description">
                             <h2><?php echo __("Overview", "solarus");?></h2>
-                            <?php the_content();?>
+                            <?php echo Core::get_content($post);?>
                         </div>
                         <div class="pictures">
                             <h2><?php echo __("Screenshots", "solarus");?></h2>

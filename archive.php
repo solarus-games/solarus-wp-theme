@@ -6,7 +6,7 @@
             <article>
                 <div class="article-header">
                     <div class="article-title">
-                        <h1><a title="<?php the_title();?>" href="<?php the_permalink();?>"><?php the_title();?></a></h1>
+                        <h1><a title="<?php echo Core::get_title($post);?>" href="<?php the_permalink();?>"><?php echo Core::get_title($post);?></a></h1>
                     </div>
                     <div class="article-metas">
                         <div class="date"><i class="fa fa-calendar-o"></i>&nbsp;<?php echo get_the_date("m-d-Y H:i:s"); ?></div>
@@ -15,12 +15,12 @@
                 </div>
                 <div class="article-body">
                     <div class="article-content">
-                        <?php the_content();?>
+                        <?php echo Core::get_content($post);?>
                     </div>
                 </div>
                 <div class="article-footer">
                     <div class="article-comments">
-                        <i class="fa fa-comment-o"></i>&nbsp;<a title="<?php the_title();?>" href="<?php the_permalink();?>">2 comments</a>
+                        <i class="fa fa-comment-o"></i>&nbsp;<a title="<?php echo Core::get_title($post);?>" href="<?php the_permalink();?>">2 comments</a>
                     </div>
                 </div>
             </article>
