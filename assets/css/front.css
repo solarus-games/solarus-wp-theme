@@ -13,6 +13,12 @@
     src: url("../fonts/ubuntu_regular.woff") format("woff");
 }
 
+/* Bootstrap override */
+
+.container {
+    width: 960px;
+}
+
 body {
     font-family: "Ubuntu Regular";
     background: #FFFFFF;
@@ -204,33 +210,6 @@ header#header ul.nav > li > .sub-menu > li > .sub-menu a:hover {
     background: #ffbb00 !important;
 }
 
-header#header ul.nav.navbar-right a {
-    font-size: 12px;
-    padding: 6px 12px;
-    text-align: center;
-}
-
-header#header ul.nav.navbar-right a:before {
-    display: block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    margin-bottom: 5px;
-}
-
-header#header ul.nav.navbar-right .icon-blog a:before {
-    content: "\f133";
-}
-
-header#header ul.nav.navbar-right .icon-board a:before {
-    content: "\f0e6";
-}
-
-header#header ul.nav.navbar-right .icon-search a:before {
-    content: "\f002";
-}
-
 #breadcrumb {
     background: #ededed;
     color: #8d8d8d;
@@ -289,9 +268,13 @@ main#main #page .page-content h2 {
 }
 
 main#main #games article {
-    margin-top: 28px;
+    margin-top: 14px;
     border-radius: 6px;
     position: relative;
+}
+
+main#main #games article .game-title {
+    margin-top: 14px;
 }
 
 main#main #games article .game-title i.fa {
@@ -329,7 +312,6 @@ main#main #games article .game-content .details {
 }
 
 main#main #games article .game-content .details .row {
-    padding: 7px;
     color: #b1b1b1;
 }
 
@@ -337,7 +319,13 @@ main#main #games article .game-content .details .row a {
     margin-right: 7px;
 }
 
-main#main #games article .game-content .details .row:nth-child(even) {
+main#main #games article .game-content .details .row > div {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    min-height: 34px;
+}
+
+main#main #games article .game-content .details .row:nth-child(even) > div {
     background: #f7f7f7;
 }
 

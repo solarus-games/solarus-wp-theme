@@ -1,4 +1,10 @@
 <p class="post-attributes-label-wrapper">
+    <label for="release_date" class="post-attributes-label"><?php echo __("Date de sortie : ", "solarus");?></label>
+</p>
+<div>
+    <input type="text" name="release_date" id="release_date" class="regular-text" value="<?php echo $release_date;?>"/>
+</div>
+<p class="post-attributes-label-wrapper">
     <label for="players" class="post-attributes-label"><?php echo __("Nombre de joueurs : ", "solarus");?></label>
 </p>
 <div>

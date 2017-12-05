@@ -25,8 +25,7 @@
     <header id="header">
         <div class="container">
             <a href="/" class="navbar-brand"><?php echo get_bloginfo("name");?></a>
-            <?php wp_nav_menu( array('theme_location' => 'header-menu-left', 'menu_class' => 'nav navbar-nav')); ?>
-            <?php wp_nav_menu( array('theme_location' => 'header-menu-right', 'menu_class' => 'nav navbar-nav navbar-right')); ?>
+            <?php wp_nav_menu( array('theme_location' => 'header-menu', 'menu_class' => 'nav navbar-nav')); ?>
         </div>
     </header>
     <div id="breadcrumb">

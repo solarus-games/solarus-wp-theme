@@ -110,8 +110,10 @@ class Core
                 if ($file) {
                     $content = file_get_contents($file);
                 }
-                $content = apply_filters('the_content', $content);
                 $content = Core::get_content_from_content_file($content);
+                $parsedown = new Parsedown();
+                $content = $parsedown->text($content);
+                $content = apply_filters('the_content', $content);
                 break;
             default:
                 $content = Core::get_post_meta('_content_' . get_locale(), $p->ID);
@@ -234,6 +236,7 @@ class Core
 
         global $post;
         $args = array(
+            'release_date' => Core::get_post_meta('_release_date', $post->ID),
             'players' => Core::get_post_meta('_players', $post->ID),
             'video_youtube' => Core::get_post_meta('_video_youtube', $post->ID)
         );
@@ -329,6 +332,18 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_team_item($atts = array(), $content) {
+
+        $default_atts = array("name", "twitter-account", "avatar");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/team_item', $args);
+
+    } //EOM
+
     public static function get_post_meta($meta = false, $id = false)
     {
 
@@ -406,6 +421,9 @@ class Core
         if ($p == false) {
             global $post;
             $p = $post;
+        }
+        if (is_int($p)) {
+            $p = get_post($p);
         }
         if ($language == false) {
             $language =  get_locale();
@@ -498,6 +516,18 @@ class Core
 
     } //EOM
 
+    public function merge_shortcode_atts($default_atts = array(), $atts = array()) {
+
+        foreach($default_atts as $att) {
+            if (isset($atts[$att]) == false) {
+                $atts[$att] = false;
+            }
+        }
+
+        return $atts;
+
+    } //EOM
+
     function register_admin_pages()
     {
 
@@ -543,12 +573,15 @@ class Core
                 add_filter('locale', array($this, 'get_locale'), 1, 2);
             }
         }
+        // Shortcodes
+        add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
 
     } //EOM
 
     public function register_menus()
     {
 
+        register_nav_menu('header-menu', __('Header menu', 'solarus'));
         register_nav_menu('header-menu-left', __('Header menu (gauche)', 'solarus'));
         register_nav_menu('header-menu-right', __('Header menu (droite)', 'solarus'));
 
@@ -1062,6 +1095,11 @@ class Core
     {
 
         global $post;
+        if (isset($_POST['release_date']) && !empty($_POST['release_date'])) {
+            update_post_meta($post->ID, '_release_date', $_POST['release_date']);
+        } else {
+            delete_post_meta($post->ID, '_release_date');
+        }
         if (isset($_POST['players']) && !empty($_POST['players'])) {
             update_post_meta($post->ID, '_players', $_POST['players']);
         } else {
