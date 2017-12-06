@@ -2,17 +2,17 @@
     <label for="release_date" class="post-attributes-label"><?php echo __("Date de sortie : ", "solarus");?></label>
 </p>
 <div>
-    <input type="text" name="release_date" id="release_date" class="regular-text" value="<?php echo $release_date;?>"/>
+    <input type="text" name="release_date" id="release_date" value="<?php echo $release_date;?>"/>
 </div>
 <p class="post-attributes-label-wrapper">
-    <label for="players" class="post-attributes-label"><?php echo __("Nombre de joueurs : ", "solarus");?></label>
+    <label for="license" class="post-attributes-label"><?php echo __("Licence : ", "solarus");?></label>
 </p>
 <div>
-    <input type="text" name="players" id="players" class="regular-text" value="<?php echo $players;?>"/>
+    <textarea name="license" id="license"><?php echo $license;?></textarea>
 </div>
 <p class="post-attributes-label-wrapper">
     <label for="video_youtube" class="post-attributes-label"><?php echo __("Vidéo youtube : ", "solarus");?></label>
 </p>
 <div>
-    <input type="text" name="video_youtube" id="video_youtube" class="regular-text" value="<?php echo $video_youtube;?>"/>
+    <input type="text" name="video_youtube" id="video_youtube" value="<?php echo $video_youtube;?>"/>
 </div>

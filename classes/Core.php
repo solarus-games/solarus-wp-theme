@@ -1,4 +1,5 @@
 <?php
+
 class Core
 {
 
@@ -28,7 +29,28 @@ class Core
 
     } //EOM
 
-    public function check_if_article_is_translate() {
+    public function change_query($query) {
+
+        if (is_admin() == false && $query->is_main_query()) {
+            if ($query->query['post_type'] == 'game') {
+                if (count($_GET) > 0) {
+                    $tax_query = array();
+                    foreach($_GET as $key => $value) {
+                        $tax_query[] = array(
+                            'taxonomy' => $key,
+                            'field'    => 'id',
+                            'terms'    => $value,
+                        );
+                    }
+                    $query->set('tax_query', $tax_query);
+                }
+            }
+        }
+
+    } //EOM
+
+    public function check_if_article_is_translate()
+    {
 
         //TODO
 
@@ -83,7 +105,7 @@ class Core
             $p = $post;
         }
         if ($language == false) {
-            $language =  get_locale();
+            $language = get_locale();
         }
         $type_content = Core::get_post_meta('_type_content', $p->ID);
         switch ($type_content) {
@@ -150,6 +172,28 @@ class Core
 
     } //EOM
 
+    public static function get_url_game_filter($taxonomy = false, $term = false)
+    {
+        if ($taxonomy == false) {
+            return false;
+        }
+        if ($term == false) {
+            return false;
+        }
+        $current_url = Core::get_current_url();
+        $url_items = explode('?', $current_url);
+        $current_url = $url_items[0];
+        $params = http_build_query(array_merge($_GET, array($taxonomy => $term)));
+        if ($params && count($_GET) > 0) {
+            $current_url .= '?' . $params;
+        } else {
+            $current_url .= '?' . $taxonomy . '=' . $term;
+        }
+
+        return $current_url;
+
+    } //EOM
+
     public function get_languages()
     {
         $args = array(
@@ -175,7 +219,7 @@ class Core
         if (count($languages) == 0) {
             return $locale;
         }
-        foreach($languages as $language) {
+        foreach ($languages as $language) {
             if ($language->post_name == $uri[1]) {
                 return Core::get_post_meta('_code', $language->ID);
             }
@@ -233,7 +277,7 @@ class Core
         global $post;
         $args = array(
             'release_date' => Core::get_post_meta('_release_date', $post->ID),
-            'players' => Core::get_post_meta('_players', $post->ID),
+            'license' => Core::get_post_meta('_license', $post->ID),
             'video_youtube' => Core::get_post_meta('_video_youtube', $post->ID)
         );
         echo Core::load_view('admin/metaboxes/game_informations', $args);
@@ -309,7 +353,7 @@ class Core
             return $url;
         }
         $found = false;
-        foreach($languages as $language) {
+        foreach ($languages as $language) {
             if ($uri[1] == $language->post_name) {
                 $found = true;
             }
@@ -344,7 +388,8 @@ class Core
 
     } //EOM
 
-    public function get_view_shortcode_team_item($atts = array(), $content) {
+    public function get_view_shortcode_team_item($atts = array(), $content)
+    {
 
         $default_atts = array("name", "twitter-account", "avatar");
         $atts = $this->merge_shortcode_atts($default_atts, $atts);
@@ -394,7 +439,7 @@ class Core
             $p = $post;
         }
         if ($language == false) {
-            $language =  get_locale();
+            $language = get_locale();
         }
         $type_content = Core::get_post_meta('_type_content', $p->ID);
         if ($type_content != $type) {
@@ -432,7 +477,8 @@ class Core
 
     } //EOM
 
-    public function get_text_translated($translated, $text, $domain) {
+    public function get_text_translated($translated, $text, $domain)
+    {
 
         return $text;
 
@@ -449,7 +495,7 @@ class Core
             $p = get_post($p);
         }
         if ($language == false) {
-            $language =  get_locale();
+            $language = get_locale();
         }
         $type_content = Core::get_post_meta('_type_content', $p->ID);
         switch ($type_content) {
@@ -542,9 +588,10 @@ class Core
 
     } //EOM
 
-    public function merge_shortcode_atts($default_atts = array(), $atts = array()) {
+    public function merge_shortcode_atts($default_atts = array(), $atts = array())
+    {
 
-        foreach($default_atts as $att) {
+        foreach ($default_atts as $att) {
             if (isset($atts[$att]) == false) {
                 $atts[$att] = false;
             }
@@ -574,6 +621,7 @@ class Core
         add_action('wp_enqueue_scripts', array($this, 'register_scripts'));
         add_action('wp_enqueue_scripts', array($this, 'register_styles'));
         add_action('wp', array($this, 'check_if_article_is_translate'));
+        add_action('pre_get_posts', array($this, 'change_query'));
 
         // Admin hooks
         add_action('add_meta_boxes', array($this, 'register_metaboxes'));
@@ -600,6 +648,7 @@ class Core
             }
         }
         add_filter('gettext', array($this, 'get_text_translated'), 10, 3);
+
         // Shortcodes
         add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
 
@@ -664,8 +713,8 @@ class Core
             __('Informations'),
             array($this, 'get_metabox_game_informations'),
             'game',
-            'normal',
-            'high'
+            'side',
+            'default'
         );
         add_meta_box(
             'game_page-informations',
@@ -918,6 +967,7 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'genre'),
@@ -943,6 +993,7 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'platform'),
@@ -968,6 +1019,7 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'language'),
@@ -993,12 +1045,40 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'developer'),
         );
 
         register_taxonomy('developer', array('game'), $args);
+
+        $labels = array(
+            'name' => __('Groupes de joueurs', 'solarus'),
+            'singular_name' => __('Groupe de joueur', 'solarus'),
+            'search_items' => __('Rechercher groupes de joueur', 'solarus'),
+            'all_items' => __('Tous les groupes de joueur', 'solarus'),
+            'parent_item' => __('Groupe de joueur parent', 'solarus'),
+            'parent_item_colon' => __('Groupe de joueur parent : ', 'solarus'),
+            'edit_item' => __('Editer groupe de joueur', 'solarus'),
+            'update_item' => __('Mettre à jour groupe de joueur', 'solarus'),
+            'add_new_item' => __('Ajouter nouveau groupe de joueur', 'solarus'),
+            'new_item_name' => __('Nom d', 'solarus'),
+            'menu_name' => __('Groupe de joueurs', 'solarus'),
+        );
+
+        $args = array(
+            'hierarchical' => true,
+            'labels' => $labels,
+            'show_ui' => true,
+            'public' => false,
+            'show_admin_column' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'group_player')
+        );
+
+        register_taxonomy('classification', array('game'), $args);
+
 
         $labels = array(
             'name' => __('Classifications', 'solarus'),
@@ -1018,6 +1098,7 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'classification'),
@@ -1043,6 +1124,7 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'license'),
@@ -1068,6 +1150,7 @@ class Core
             'hierarchical' => true,
             'labels' => $labels,
             'show_ui' => true,
+            'public' => false,
             'show_admin_column' => true,
             'query_var' => true,
             'rewrite' => array('slug' => 'controler'),
@@ -1109,30 +1192,30 @@ class Core
             update_post_meta($post->ID, '_path_files', $post->post_name);
         }
         $languages = $this->get_languages();
-        foreach($languages as $language) {
+        foreach ($languages as $language) {
             $key = 'content_' . Core::get_post_meta('_code', $language->ID);
             if (isset($_POST[$key]) && !empty($_POST[$key])) {
-                update_post_meta($post->ID, '_'.$key, $_POST[$key]);
+                update_post_meta($post->ID, '_' . $key, $_POST[$key]);
             } else {
-                delete_post_meta($post->ID, '_'.$key);
+                delete_post_meta($post->ID, '_' . $key);
             }
             $key = 'title_' . Core::get_post_meta('_code', $language->ID);
             if (isset($_POST[$key]) && !empty($_POST[$key])) {
-                update_post_meta($post->ID, '_'.$key, $_POST[$key]);
+                update_post_meta($post->ID, '_' . $key, $_POST[$key]);
             } else {
-                delete_post_meta($post->ID, '_'.$key);
+                delete_post_meta($post->ID, '_' . $key);
             }
             $key = 'content_' . get_locale();
             if (isset($_POST['content']) && !empty($_POST['content'])) {
-                update_post_meta($post->ID, '_'.$key, $_POST['content']);
+                update_post_meta($post->ID, '_' . $key, $_POST['content']);
             } else {
-                delete_post_meta($post->ID, '_'.$key);
+                delete_post_meta($post->ID, '_' . $key);
             }
             $key = 'title_' . get_locale();
             if (isset($_POST['post_title']) && !empty($_POST['post_title'])) {
-                update_post_meta($post->ID, '_'.$key, $_POST['post_title']);
+                update_post_meta($post->ID, '_' . $key, $_POST['post_title']);
             } else {
-                delete_post_meta($post->ID, '_'.$key);
+                delete_post_meta($post->ID, '_' . $key);
             }
         }
 
@@ -1159,10 +1242,10 @@ class Core
         } else {
             delete_post_meta($post->ID, '_release_date');
         }
-        if (isset($_POST['players']) && !empty($_POST['players'])) {
-            update_post_meta($post->ID, '_players', $_POST['players']);
+        if (isset($_POST['license']) && !empty($_POST['license'])) {
+            update_post_meta($post->ID, '_license', $_POST['license']);
         } else {
-            delete_post_meta($post->ID, '_players');
+            delete_post_meta($post->ID, '_license');
         }
         if (isset($_POST['video_youtube']) && !empty($_POST['video_youtube'])) {
             update_post_meta($post->ID, '_video_youtube', $_POST['video_youtube']);

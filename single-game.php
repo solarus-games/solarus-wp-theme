@@ -5,9 +5,6 @@
             <?php while ( have_posts() ) : the_post();?>
                 <article>
                     <div class="game-header">
-                        <div class="preview">
-                            <?php the_post_thumbnail();?>
-                        </div>
                         <div class="game-title">
                             <h1><i class="fa fa-gamepad"></i> <a title="<?php echo Core::get_title($post);?>" href="<?php the_permalink();?>"><?php echo Core::get_title($post);?></a></h1>
                         </div>
@@ -18,7 +15,12 @@
                     <div class="game-body">
                         <div class="game-content">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-5">
+                                    <div class="preview">
+                                        <?php the_post_thumbnail();?>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7">
                                     <div class="details">
                                         <div class="row">
                                             <div class="col-lg-3"><strong><?php echo __("Release date", "solarus");?></strong></div>
