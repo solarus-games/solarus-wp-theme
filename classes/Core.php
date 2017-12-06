@@ -1,11 +1,4 @@
 <?php
-add_filter('query_vars', 'add_state_var', 0, 1);
-function add_state_var($vars)
-{
-    $vars[] = 'state';
-    return $vars;
-}
-
 class Core
 {
 
@@ -118,6 +111,9 @@ class Core
             default:
                 $content = Core::get_post_meta('_content_' . get_locale(), $p->ID);
                 $content = apply_filters('the_content', $content);
+        }
+        if (empty($content)) {
+            $content = __("Page not available in this language", "solarus");
         }
 
         return $content;
@@ -244,6 +240,19 @@ class Core
 
     } //EOM
 
+    public function get_metabox_page_informations()
+    {
+
+        global $post;
+        global $wp_registered_sidebars;
+        $args = array(
+            'currentSidebar' => Core::get_post_meta('_sidebar', $post->ID),
+            'sidebars' => $wp_registered_sidebars
+        );
+        echo Core::load_view('admin/metaboxes/page_informations', $args);
+
+    } //EOM
+
     public function get_metabox_game_page_informations()
     {
 
@@ -308,7 +317,10 @@ class Core
         if ($found == false) {
             return $url . '/en';
         }
-        $url = $url . '/' . $uri[1];
+        if (substr($url, -1) != '/') {
+            $url = $url . '/';
+        }
+        $url = $url . $uri[1];
         return $url;
 
     } //EOM
@@ -361,10 +373,15 @@ class Core
 
     public function get_site_url($url, $path)
     {
-
         $urlParts = explode('/', $url);
         unset($urlParts[3]);
+        if (isset($urlParts[4]) && $urlParts[4] == 'wp-login.php') {
+            unset($urlParts[4]);
+        }
         $url = implode('/', $urlParts);
+        if (substr($url, -1) != '/') {
+            $url = $url . '/';
+        }
         return $url . $path;
 
     } //EOM
@@ -415,6 +432,12 @@ class Core
 
     } //EOM
 
+    public function get_text_translated($translated, $text, $domain) {
+
+        return $text;
+
+    } //EOM
+
 
     public static function get_title($p = false, $language = false)
     {
@@ -448,6 +471,9 @@ class Core
                 break;
             default:
                 $title = Core::get_post_meta('_title_' . get_locale(), $p->ID);
+        }
+        if (empty($title)) {
+            $title = __("Page not available in this language", "solarus");
         }
 
         return $title;
@@ -573,6 +599,7 @@ class Core
                 add_filter('locale', array($this, 'get_locale'), 1, 2);
             }
         }
+        add_filter('gettext', array($this, 'get_text_translated'), 10, 3);
         // Shortcodes
         add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
 
@@ -654,6 +681,14 @@ class Core
             array($this, 'get_metabox_language_informations'),
             'language',
             'normal',
+            'default'
+        );
+        add_meta_box(
+            'page-informations',
+            __('Informations'),
+            array($this, 'get_metabox_page_informations'),
+            'page',
+            'side',
             'default'
         );
     }
@@ -786,6 +821,14 @@ class Core
             'before_title' => '<h2 class="widget-title">',
             'after_title' => '</h2>',
         ));
+        register_sidebar(array(
+            'name' => __('Sidebar faq ', 'solarus'),
+            'id' => 'sidebar-faq',
+            'before_widget' => '<li id="%1$s" class="widget %2$s">',
+            'after_widget' => '</li>',
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>',
+        ));
         for ($i = 1; $i <= 4; $i++) {
             register_sidebar(array(
                 'name' => __('Sidebar footer ' . $i, 'solarus'),
@@ -806,6 +849,7 @@ class Core
         wp_enqueue_script('jquery', $url . '/assets/plugins/jquery/jquery.min.js', false);
         if (is_admin() == false) {
             wp_enqueue_script('bootstrap', $url . '/assets/plugins/bootstrap/js/bootstrap.min.js', false);
+            wp_enqueue_script('front', $url . '/assets/js/front.js', false);
         } else {
             wp_enqueue_script('jquery-ui-tabs');
             wp_enqueue_script('admin', $url . '/assets/js/admin.js', false);
@@ -1040,6 +1084,9 @@ class Core
             return false;
         }
         switch ($post->post_type) {
+            case 'page':
+                $this->save_post_page();
+                break;
             case 'game':
                 $this->save_post_game();
                 break;
@@ -1087,6 +1134,18 @@ class Core
             } else {
                 delete_post_meta($post->ID, '_'.$key);
             }
+        }
+
+    } //EOM
+
+    public function save_post_page()
+    {
+
+        global $post;
+        if (isset($_POST['sidebar']) && !empty($_POST['sidebar'])) {
+            update_post_meta($post->ID, '_sidebar', $_POST['sidebar']);
+        } else {
+            delete_post_meta($post->ID, '_sidebar');
         }
 
     } //EOM
@@ -1139,7 +1198,7 @@ class Core
 
     public function unregister_fields()
     {
-        
+
         remove_post_type_support('game', 'editor');
         remove_post_type_support('game_page', 'editor');
         remove_post_type_support('page', 'editor');

@@ -15,10 +15,6 @@
 
 /* Bootstrap override */
 
-.container {
-    width: 960px;
-}
-
 body {
     font-family: "Ubuntu Regular";
     background: #FFFFFF;
