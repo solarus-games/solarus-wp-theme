@@ -427,6 +427,21 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_game_sheet($atts = array(), $content)
+    {
+
+        $default_atts = array("id");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $p = get_post($atts['id']);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content,
+            'p' => $p
+        );
+        return Core::load_view('front/shortcodes/game_sheet', $args);
+
+    } //EOM
+
 
 
     public static function get_post_meta($meta = false, $id = false)
@@ -681,6 +696,7 @@ class Core
         add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
         add_shortcode('jumbotron', array($this, 'get_view_shortcode_jumbotron'));
         add_shortcode('banner', array($this, 'get_view_shortcode_banner'));
+        add_shortcode('game_sheet', array($this, 'get_view_shortcode_game_sheet'));
 
     } //EOM
 
