@@ -1,4 +1,5 @@
 <div class="shortcode shortcode-jumbotron">
+    <div class="grid"></div>
     <div class="jumbotron">
         <svg width="100%" height="450px" viewBox="0 0 1200 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <g class="curve" stroke="#D6EFBA" fill="none" fill-rule="evenodd" transform="translate(0,90)">
@@ -14,10 +15,10 @@
                   <mpath xlink:href="#glowPath" />
                 </animateMotion>-->
         </svg>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-
+                    <div class="picture"></div>
                 </div>
                 <div class="col-lg-6">
                     <?php echo $content;?>
