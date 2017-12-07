@@ -88,7 +88,7 @@ ul li {
 
 header#header {
     height: 48px;
-    background: linear-gradient(90deg, #49225f 0%, #252c6f 100%); /* w3c */
+    background: linear-gradient(90deg, #743680 0%, #252c6f 100%); /* w3c */
     border-bottom: solid 1px #b9b9b9;
     position: fixed;
     width: 100%;
@@ -160,12 +160,10 @@ header#header li.current_page_item > a:after {
 }
 
 header#header .navbar-right {
-    width: 20%;
-    padding-top: 5px;
-}
-
-header#header .navbar-right {
     position: relative;
+    padding-top: 8px;
+    width: 20%;
+    padding-top: 8px;
 }
 
 header#header .navbar-right span {
@@ -173,17 +171,17 @@ header#header .navbar-right span {
     color: #FFFFFF;
     border: none;
     position: absolute;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 
 header#header .navbar-right input {
     background-color: rgba(255, 255, 255, .05);
     border: solid 1px rgba(255, 255, 255, .25);
-    border-radius: 12px;
+    border-radius: 14px;
     padding-left: 30px;
     color: #FFFFFF;
-
+    height: 28px;
 }
 
 header#header .navbar-right input:focus {
