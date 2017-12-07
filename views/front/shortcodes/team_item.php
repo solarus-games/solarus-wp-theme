@@ -13,7 +13,7 @@
     <div class="col-lg-10">
         <h3><?php echo $atts['name']; ?></h3>
         <p>
-            <?php echo $content; ?>
+        <?php echo $content; ?>
         </p>
         <?php if ($atts['twitter-account']): ?>
             <div class="link">

@@ -401,6 +401,34 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_jumbotron($atts = array(), $content)
+    {
+
+        $default_atts = array();
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/jumbotron', $args);
+
+    } //EOM
+
+    public function get_view_shortcode_banner($atts = array(), $content)
+    {
+
+        $default_atts = array("link-label", "link-url", "label");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/banner', $args);
+
+    } //EOM
+
+
+
     public static function get_post_meta($meta = false, $id = false)
     {
 
@@ -651,6 +679,8 @@ class Core
 
         // Shortcodes
         add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
+        add_shortcode('jumbotron', array($this, 'get_view_shortcode_jumbotron'));
+        add_shortcode('banner', array($this, 'get_view_shortcode_banner'));
 
     } //EOM
 
