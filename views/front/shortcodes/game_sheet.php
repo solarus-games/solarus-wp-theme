@@ -10,9 +10,9 @@
                 <h2><?php echo Core::get_title($p);?></h2>
                 <div class="metas">
                     <ul>
-                        <li><strong><?php echo __("Developer", "solarus");?></strong><?php echo Core::get_terms('developer', $p);?></li>
-                        <li><strong><?php echo __("Release date", "solarus");?></strong><?php echo Core::get_post_meta('_release_date', $p);?></li>
-                        <li><strong><?php echo __("Genre", "solarus");?></strong><?php echo Core::get_terms('genre', $p);?></li>
+                        <li><strong><?php echo __("Developer", "solarus");?></strong><?php echo Core::get_terms('developer', $p->ID);?></li>
+                        <li><strong><?php echo __("Release date", "solarus");?></strong><?php echo Core::get_post_meta('_release_date', $p->ID);?></li>
+                        <li><strong><?php echo __("Genre", "solarus");?></strong><?php echo Core::get_terms('genre', $p->ID);?></li>
                     </ul>
                 </div>
                 <p>
