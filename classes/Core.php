@@ -914,7 +914,7 @@ class Core
         if (is_admin() == false) {
             wp_enqueue_style('bootstrap', $url . '/assets/plugins/bootstrap/css/bootstrap.min.css', false);
             wp_enqueue_style('fontawesome', $url . '/assets/plugins/fontawesome/css/font-awesome.min.css', false);
-            wp_enqueue_style('front', $url . '/assets/css/front.css', false);
+            wp_enqueue_style('front', $url . '/assets/css/front.scss', false);
         } else {
             wp_enqueue_style('admin', $url . '/assets/css/admin.css', false);
         }
