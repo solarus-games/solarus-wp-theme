@@ -442,6 +442,27 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_games_thumbnail($atts = array(), $content)
+    {
+
+        $default_atts = array("ids");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $posts = array();
+        if ($atts['ids']) {
+            $ids = explode(',', $atts['ids']);
+            foreach($ids as $id) {
+                $posts[] = get_post($id);
+            }
+        }
+        $args = array(
+            'atts' => $atts,
+            'content' => $content,
+            'posts' => $posts
+        );
+        return Core::load_view('front/shortcodes/games_thumbnail', $args);
+
+    } //EOM
+
 
 
     public static function get_post_meta($meta = false, $id = false)
@@ -697,6 +718,7 @@ class Core
         add_shortcode('jumbotron', array($this, 'get_view_shortcode_jumbotron'));
         add_shortcode('banner', array($this, 'get_view_shortcode_banner'));
         add_shortcode('game_sheet', array($this, 'get_view_shortcode_game_sheet'));
+        add_shortcode('games_thumbnail', array($this, 'get_view_shortcode_games_thumbnail'));
 
     } //EOM
 
