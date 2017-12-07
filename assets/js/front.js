@@ -18,8 +18,14 @@
         // Events
         $(window).on('scroll', function() {
             var positionY = $('html').scrollTop();
-            console.log(positionY);
+            var heightMax = $('#header').height();
+            if (positionY > heightMax) {
+                $('#header').addClass('static');
+            } else {
+                $('#header').removeClass('static');
+            }
         });
+        $(window).trigger('scroll');
     });
 
 }(jQuery));

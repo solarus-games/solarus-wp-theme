@@ -36,7 +36,7 @@
             </div>
         </div>
     </header>
-    <?php if (is_home() == false):?>
+    <?php if (is_front_page() == false):?>
         <div id="breadcrumb">
            <?php echo Core::get_view_breadcrumb();?>
         </div>
