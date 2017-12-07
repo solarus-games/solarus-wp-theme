@@ -124,6 +124,9 @@ header#header a {
     color: #FFFFFF;
     padding: 12px 0;
     margin: 0 20px;
+    min-width: 60px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 header#header a:hover {
@@ -205,6 +208,7 @@ header#header ul.nav > li > .sub-menu a {
     display: block;
     text-decoration: none;
     color: #393939;
+    margin: 0;
 }
 
 header#header ul.nav > li > .sub-menu a:hover {
