@@ -137,18 +137,20 @@ header#header li.current_page_parent > a:after {
     background: #FFBC00;
     content: "";
     margin-top: 10px;
-    width: 100%;
+    width: calc(100% + 20px);
     height: 3px;
     display: block;
+    margin-left: -10px;
 }
 
 header#header li.current_page_item > a:after {
     background: #FFBC00;
     content: "";
     margin-top: 10px;
-    width: 100%;
+    width: calc(100% + 20px);
     height: 3px;
     display: block;
+    margin-left: -10px;
 }
 
 header#header .navbar-right {
