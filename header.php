@@ -26,6 +26,14 @@
         <div class="container">
             <a href="/" class="navbar-brand"><?php echo get_bloginfo("name");?></a>
             <?php wp_nav_menu( array('theme_location' => 'header-menu', 'menu_class' => 'nav navbar-nav')); ?>
+            <div class="nav navbar-nav navbar-right">
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <i class="fa fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                </div>
+            </div>
         </div>
     </header>
     <div id="breadcrumb">

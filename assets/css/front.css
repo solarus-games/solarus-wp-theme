@@ -87,17 +87,21 @@ ul li {
 }
 
 header#header {
-    height: 50px;
-    background: #393939;
+    height: 48px;
+    background: linear-gradient(90deg, #49225f 0%, #252c6f 100%); /* w3c */
     border-bottom: solid 1px #b9b9b9;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 header#header .navbar-brand {
     text-indent: -1000px;
     overflow: hidden;
-    height: 50px;
-    width: 108px;
-    background: url(../img/logo.png) 0 10px no-repeat !important;
+    height: 48px;
+    width: 140px;
+    background: url(../img/logo.svg) 0 4px no-repeat !important;
+    background-size: 140px !important;
     margin-right: 14px;
 
 }
@@ -117,12 +121,52 @@ header#header ul li {
 
 header#header a {
     background: transparent !important;
-    color: #d5d5d5;
+    color: #FFFFFF;
+    padding: 12px 0;
+    margin: 0 20px;
 }
 
 header#header a:hover {
     color: #ffbb00;
 }
+
+header#header li.current_page_parent > a {
+    border-bottom: solid 3px #FFBC00;
+}
+
+header#header li.current_page_item > a {
+    border-bottom: solid 3px #FFBC00;
+}
+
+header#header .navbar-right {
+    width: 20%;
+    padding-top: 5px;
+}
+
+header#header .navbar-right span {
+    background: transparent;
+    color: #FFFFFF;
+    border: solid 1px rgba(255, 255, 255, .25);
+    border-right: none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+
+header#header .navbar-right input {
+    background: transparent;
+    border: solid 1px rgba(255, 255, 255, .25);
+    border-left: none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+}
+
+header#header .navbar-right input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 
 header#header ul.nav > li > .sub-menu {
     border-radius: 6px;
@@ -131,25 +175,6 @@ header#header ul.nav > li > .sub-menu {
     padding-top: 14px;
     display: none;
     z-index: 1000;
-}
-
-header#header ul.nav > li {
-
-    border-left: solid 1px #474747;
-    border-right: solid 1px #393939;
-
-}
-
-header#header ul.nav > li:last-child {
-
-    border-right: solid 1px #474747;
-
-}
-
-header#header ul.nav {
-
-    border-left: solid 1px #393939;
-
 }
 
 header#header ul.nav > li:hover > .sub-menu {

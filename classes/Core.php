@@ -32,7 +32,7 @@ class Core
     public function change_query($query) {
 
         if (is_admin() == false && $query->is_main_query()) {
-            if ($query->query['post_type'] == 'game') {
+            if (isset($query->query['post_type']) && $query->query['post_type'] == 'game') {
                 if (count($_GET) > 0) {
                     $tax_query = array();
                     foreach($_GET as $key => $value) {
