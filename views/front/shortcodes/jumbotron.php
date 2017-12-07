@@ -1,19 +1,12 @@
 <div class="shortcode shortcode-jumbotron">
     <div class="grid"></div>
     <div class="jumbotron">
-        <svg width="100%" height="450px" viewBox="0 0 1200 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <g class="curve" stroke="#D6EFBA" fill="none" fill-rule="evenodd" transform="translate(0,90)">
-                <path id="glowPath" d="M 0, 60 S 300, -60, 600, 60, 800, -120, 1200 60"/>
-                <path d="M 0, 60 S 200, -60, 400, 60, 900, -120, 1200 60"/>
-                <path d="M 0, 60 S 200, -70, 400, 70, 800, -120, 1200 60"/>
-                <path d="M 0, 60 S 200, -60, 400, 80, 600, -120, 1200 60"/>
-                <path d="M 0, 60 S 300, -60, 600, 60, 800, -120, 1200 60"/>
-                <path d="M 0, 60 S 200, -70, 400, 60, 800, -120, 1200 60"/>
+        <svg viewBox="0 0 1440 574" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414">
+            <g class="curve" fill="#fff" fill-opacity=".05">
+                <path d="M1440 573.417H0V435.83c46.087 18.236 98.185 31.085 158.25 35.749C516.228 499.375 896.757 25.293 1440 0v573.417z"/>
+                <path d="M1440 573.417H0v-88.22C593.208 614.335 858.302 70.795 1440 326.061v247.356z"/>
+                <path d="M1440 573.417H0v-49.316c423.696 91.601 985.817-208.322 1440-145.675v194.991z"/>
             </g>
-            <!--    <circle id="glow" r="2" cx="0" cy="90" fill="#fff"></circle>
-                <animateMotion xlink:href="#glow" dur="6s" begin="1.2s" count="indefinite">
-                  <mpath xlink:href="#glowPath" />
-                </animateMotion>-->
         </svg>
         <div class="container">
             <div class="row">
