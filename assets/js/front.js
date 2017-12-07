@@ -9,6 +9,11 @@
             }, 1000);
             return false;
         });
+        // Events
+        $(window).on('scroll', function() {
+            var positionY = $('html').scrollTop();
+            console.log(positionY);
+        });
     });
 
 }(jQuery));
