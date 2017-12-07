@@ -31,12 +31,14 @@
                     <span class="input-group-addon">
                         <i class="fa fa-search"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    <input data-toggle="search" type="text" class="form-control"/>
                 </div>
             </div>
         </div>
     </header>
-    <div id="breadcrumb">
-       <?php echo Core::get_view_breadcrumb();?>
-    </div>
+    <?php if (is_home() == false):?>
+        <div id="breadcrumb">
+           <?php echo Core::get_view_breadcrumb();?>
+        </div>
+    <?php endif;?>
     <main id="main">

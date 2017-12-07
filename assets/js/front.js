@@ -1,5 +1,11 @@
 (function ($) {
     $(document).on('ready', function() {
+        $('[data-toggle=search]').on('focus', function() {
+            $(this).parents('.nav').first().addClass('focus');
+        });
+        $('[data-toggle=search]').on('blur', function() {
+            $(this).parents('.nav').first().removeClass('focus');
+        });
         $('[data-toggle=scroll-summary]').on('click', function() {
             var target = $(this).data('target');
             var targetNode = $('#page-content').find('h2').get(target);
