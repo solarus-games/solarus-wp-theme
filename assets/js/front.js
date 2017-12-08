@@ -1,5 +1,6 @@
 (function ($) {
     $(document).on('ready', function() {
+        $('[data-toggle=fancybox]').fancybox();
         $('[data-toggle=search]').on('focus', function() {
             $(this).parents('.nav').first().addClass('focus');
         });

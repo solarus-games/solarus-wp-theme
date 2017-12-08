@@ -1121,6 +1121,7 @@ class Core
         if (is_admin() == false) {
             wp_enqueue_script('bootstrap', $url . '/assets/plugins/bootstrap/js/bootstrap.min.js', false);
             wp_enqueue_script('parallax', $url . '/assets/plugins/parallax/parallax.min.js', false);
+            wp_enqueue_script('fancybox', $url . '/assets/plugins/fancybox/jquery.fancybox.min.js', false);
             wp_enqueue_script('front', $url . '/assets/js/front.js', false);
         } else {
             wp_enqueue_script('jquery-ui-tabs');
@@ -1137,6 +1138,7 @@ class Core
         if (is_admin() == false) {
             wp_enqueue_style('bootstrap', $url . '/assets/plugins/bootstrap/css/bootstrap.min.css', false);
             wp_enqueue_style('fontawesome', $url . '/assets/plugins/fontawesome/css/font-awesome.min.css', false);
+            wp_enqueue_style('fancybox', $url . '/assets/plugins/fancybox/jquery.fancybox.min.css', false);
             wp_enqueue_style('front', $url . '/assets/css/front.scss', false);
         } else {
             wp_enqueue_style('admin', $url . '/assets/css/admin.css', false);

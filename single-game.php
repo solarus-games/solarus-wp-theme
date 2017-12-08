@@ -1,4 +1,5 @@
 <?php get_header();?>
+<?php $video_youtube = Core::get_post_meta('_video_youtube', $post->ID);?>
 <div id="games" class="game container">
     <div class="row">
         <div class="col-lg-9">
@@ -59,7 +60,15 @@
                             </div>
                             <div class="pictures">
                                 <h2><?php echo __("Screenshots", "solarus");?></h2>
-
+                                <div class="row">
+                                    <?php if ($video_youtube):?>
+                                        <div class="col-lg-3">
+                                            <a title="<?php echo $post->post_title;?>" href="https://youtu.be/<?php echo $video_youtube;?>?list=<?php echo $video_youtube;?>" data-toggle="fancybox" data-fancybox="gallery">
+                                                <img alt="<?php echo $post->post_title;?>" src="https://img.youtube.com/vi/<?php echo $video_youtube;?>/0.jpg"/>
+                                            </a>
+                                        </div>
+                                    <?php endif;?>
+                                </div>
                             </div>
                             <div class="downloads">
                                 <h2><?php echo __("Download", "solarus");?></h2>
