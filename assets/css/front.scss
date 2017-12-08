@@ -133,7 +133,7 @@ ul li {
 }
 
 .parallax-mirror {
-  z-index: 1000 !important;
+  z-index: 1 !important;
 }
 
 header#header, .home header#header.static {
@@ -591,6 +591,7 @@ footer#footer h2 {
   background: #ffbb00;
   height: 65px;
   padding-top: 16px;
+  margin-bottom: 14px;
 }
 
 .shortcode-banner h2 {

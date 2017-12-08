@@ -27,12 +27,14 @@
             <a href="/" class="navbar-brand"><?php echo get_bloginfo("name");?></a>
             <?php wp_nav_menu( array('theme_location' => 'header-menu', 'menu_class' => 'nav navbar-nav')); ?>
             <div class="nav navbar-nav navbar-right">
-                <div class="input-group">
+                <form method="GET">
+                    <div class="input-group">
                     <span class="input-group-addon">
                         <i class="fa fa-search"></i>
                     </span>
-                    <input data-toggle="search" type="text" class="form-control"/>
-                </div>
+                        <input<?php if (isset($_GET['s'])):?> value="<?php echo $_GET['s'];?>"<?php endif;?> name="s" data-toggle="search" type="text" class="form-control"/>
+                    </div>
+                </form>
             </div>
         </div>
     </header>
