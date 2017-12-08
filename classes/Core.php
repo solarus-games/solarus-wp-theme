@@ -611,8 +611,13 @@ class Core
         }
         $terms = wp_get_post_terms($id, $taxonomy);
         $result = "";
+        $count = 0;
         foreach ($terms as $term) {
-            $result .= '<a title="' . $term->name . '" href="' . get_term_link($term) . '">' . $term->name . '</a>';
+            if ($count > 0) {
+                $result.= ' - ';
+            }
+            $result .= '<a title="' . $term->name . '" href="' . Core::get_url_game_filter($taxonomy, $term->term_id) . '">' . $term->name . '</a>';
+            $count++;
         }
         return $result;
 
@@ -1213,7 +1218,7 @@ class Core
             'edit_item' => __('Editer groupe de joueur', 'solarus'),
             'update_item' => __('Mettre à jour groupe de joueur', 'solarus'),
             'add_new_item' => __('Ajouter nouveau groupe de joueur', 'solarus'),
-            'new_item_name' => __('Nom d', 'solarus'),
+            'new_item_name' => __('Nom du groupe', 'solarus'),
             'menu_name' => __('Groupe de joueurs', 'solarus'),
         );
 
@@ -1227,7 +1232,33 @@ class Core
             'rewrite' => array('slug' => 'group_player')
         );
 
-        register_taxonomy('classification', array('game'), $args);
+        register_taxonomy('group_player', array('game'), $args);
+
+        $labels = array(
+            'name' => __('États', 'solarus'),
+            'singular_name' => __('Éat', 'solarus'),
+            'search_items' => __('Rechercher états', 'solarus'),
+            'all_items' => __('Tous les états', 'solarus'),
+            'parent_item' => __('Éat parent', 'solarus'),
+            'parent_item_colon' => __('État parent : ', 'solarus'),
+            'edit_item' => __('Editer état', 'solarus'),
+            'update_item' => __('Mettre à jour état', 'solarus'),
+            'add_new_item' => __('Ajouter nouvel état', 'solarus'),
+            'new_item_name' => __("Nom de l'état", 'solarus'),
+            'menu_name' => __('États', 'solarus'),
+        );
+
+        $args = array(
+            'hierarchical' => true,
+            'labels' => $labels,
+            'show_ui' => true,
+            'public' => false,
+            'show_admin_column' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'state')
+        );
+
+        register_taxonomy('state', array('game'), $args);
 
 
         $labels = array(

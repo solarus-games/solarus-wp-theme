@@ -26,6 +26,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+
 @media (min-width: 1200px) {
   .container-half {
     width: 585px;
@@ -44,9 +45,14 @@
   }
 }
 
+html {
+  height:100%;
+}
+
 body {
   font-family: "Ubuntu Regular";
   background: #FFFFFF;
+  height:100%;
 }
 
 a {
@@ -335,6 +341,15 @@ header#header ul.nav > li > .sub-menu > li > .sub-menu a:hover {
   margin: 0;
 }
 
+main#main {
+  margin-top: 30px;
+  min-height: 100%;
+}
+
+.home main#main {
+  margin-top: 0;
+}
+
 main#main #sidebar {
   background: #f7f7f7;
   padding: 14px;
@@ -407,10 +422,6 @@ main#main #games article .game-content .details {
 
 main#main #games article .game-content .details .row {
   color: #b1b1b1;
-}
-
-main#main #games article .game-content .details .row a {
-  margin-right: 7px;
 }
 
 main#main #games article .game-content .details .row > div {
@@ -621,6 +632,7 @@ footer#footer h2 {
   color: #b0b0b0;
 }
 
+
 .shortcode-game-sheet .metas strong {
   margin-right: 14px;
 }
@@ -785,7 +797,6 @@ footer#footer h2 {
   font-size: 24px;
 }
 
-
 .shortcode-highlight .block {
   background: #f7f7f7;
   margin: 14px 7px 14px 14px;
@@ -799,7 +810,6 @@ footer#footer h2 {
   font-size: 24px;
 }
 
-
 .shortcode-highlight .content {
   color: #8a8a8a;
 }
@@ -810,8 +820,7 @@ footer#footer h2 {
   padding: 14px;
 }
 
-
-.shortcode-latest-news ul{
+.shortcode-latest-news ul {
   list-style-type: none;
   color: #b0b0b0;
 }
