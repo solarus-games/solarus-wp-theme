@@ -13,13 +13,36 @@
   src: url("../fonts/ubuntu_regular.woff") format("woff");
 }
 
-
 @font-face {
   font-family: "Ubuntu Bold";
   src: url("../fonts/ubuntu_bold.woff") format("woff");
 }
 
-/* Bootstrap override */
+/* Bootstrap extend */
+
+.container-half {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 1200px) {
+  .container-half {
+    width: 585px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-half {
+    width: 496px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-half {
+    width: 384px;
+  }
+}
 
 body {
   font-family: "Ubuntu Regular";
@@ -39,6 +62,7 @@ strong {
   font-weight: normal;
   font-family: "Ubuntu Bold";
 }
+
 h1 {
   font-family: "Ubuntu Medium";
   font-size: 24px;
@@ -583,6 +607,7 @@ footer#footer h2 {
 .shortcode-game-sheet h2 {
   color: #536db3;
   margin: 14px 0;
+  font-size: 24px;
 }
 
 .shortcode-game-sheet ul {
@@ -694,8 +719,6 @@ footer#footer h2 {
   font-size: 13px;
 }
 
-
-
 .shortcode-jumbotron .btn-default {
   background: transparent;
   color: #ffbb00;
@@ -730,4 +753,59 @@ footer#footer h2 {
   display: inline-block;
   width: 1em;
   margin-left: -1em;
+}
+
+.shortcode-container {
+  position: relative;
+}
+
+.shortcode-banner-title {
+  position: static;
+}
+
+.shortcode-banner-title .background {
+  position: absolute;
+  background: #f7f7f7;
+  left: 0;
+  width: 100%;
+  padding: 27px;
+  z-index: -1;
+}
+
+.shortcode-banner-title.shortcode-banner-title-small {
+  width: 50%;
+  float: left;
+}
+
+.shortcode-banner-title .content {
+  position: absolute;
+}
+
+.shortcode-banner-title h2 {
+  color: #536db3;
+  padding: 14px;
+  font-size: 24px;
+}
+
+
+.shortcode-highlight .block {
+  background: #f7f7f7;
+  margin: 14px 7px 14px 14px;
+  padding: 14px;
+}
+
+.shortcode-highlight h2 {
+  padding: 14px 0;
+  font-size: 24px;
+}
+
+
+.shortcode-highlight .content {
+  color: #8a8a8a;
+}
+
+.shortcode-highlight i {
+  font-size: 48px;
+  color: #ffbb00;
+  padding: 14px;
 }

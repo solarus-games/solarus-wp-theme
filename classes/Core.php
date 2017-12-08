@@ -427,6 +427,19 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_container($atts = array(), $content)
+    {
+
+        $default_atts = array();
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/container', $args);
+
+    } //EOM
+
     public function get_view_shortcode_game_sheet($atts = array(), $content)
     {
 
@@ -463,6 +476,31 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_banner_title($atts = array(), $content)
+    {
+
+        $default_atts = array("title", "width");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/games_banner_title', $args);
+
+    } //EOM
+
+    public function get_view_shortcode_highlight($atts = array(), $content)
+    {
+
+        $default_atts = array("title", "icon", "width");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/highlight', $args);
+
+    } //EOM
 
 
     public static function get_post_meta($meta = false, $id = false)
@@ -714,11 +752,14 @@ class Core
         add_filter('gettext', array($this, 'get_text_translated'), 10, 3);
 
         // Shortcodes
+        add_shortcode('container', array($this, 'get_view_shortcode_container'));
         add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
         add_shortcode('jumbotron', array($this, 'get_view_shortcode_jumbotron'));
         add_shortcode('banner', array($this, 'get_view_shortcode_banner'));
         add_shortcode('game_sheet', array($this, 'get_view_shortcode_game_sheet'));
         add_shortcode('games_thumbnail', array($this, 'get_view_shortcode_games_thumbnail'));
+        add_shortcode('banner_title', array($this, 'get_view_shortcode_banner_title'));
+        add_shortcode('highlight', array($this, 'get_view_shortcode_highlight'));
 
     } //EOM
 
