@@ -1007,6 +1007,7 @@ class Core
         wp_enqueue_script('jquery', $url . '/assets/plugins/jquery/jquery.min.js', false);
         if (is_admin() == false) {
             wp_enqueue_script('bootstrap', $url . '/assets/plugins/bootstrap/js/bootstrap.min.js', false);
+            wp_enqueue_script('parallax', $url . '/assets/plugins/parallax/parallax.min.js', false);
             wp_enqueue_script('front', $url . '/assets/js/front.js', false);
         } else {
             wp_enqueue_script('jquery-ui-tabs');
