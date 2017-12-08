@@ -1,7 +1,7 @@
 <div class="shortcode shortcode-jumbotron">
     <div class="background"></div>
     <div class="grid"></div>
-    <div class="curves" data-parallax="scroll" data-image-src="<?php echo get_template_directory_uri();?>/assets/img/jumbotron_curves.svg"></div>
+    <div class="curves" data-speed=".5" data-parallax="scroll" data-image-src="<?php echo get_template_directory_uri();?>/assets/img/jumbotron_curves.svg"></div>
     <div class="jumbotron">
         <div class="container">
             <div class="row">
