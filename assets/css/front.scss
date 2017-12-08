@@ -13,6 +13,12 @@
   src: url("../fonts/ubuntu_regular.woff") format("woff");
 }
 
+
+@font-face {
+  font-family: "Ubuntu Bold";
+  src: url("../fonts/ubuntu_bold.woff") format("woff");
+}
+
 /* Bootstrap override */
 
 body {
@@ -29,6 +35,10 @@ a:hover {
   color: #f7a100;
 }
 
+strong {
+  font-weight: normal;
+  font-family: "Ubuntu Bold";
+}
 h1 {
   font-family: "Ubuntu Medium";
   font-size: 24px;
@@ -98,7 +108,7 @@ header#header, .home header#header.static {
   border-bottom: solid 1px #b9b9b9;
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
 }
 
 header#header .navbar-brand {
@@ -185,7 +195,7 @@ header#header .navbar-right span {
   color: #FFFFFF;
   border: none;
   position: absolute;
-  margin-top: 2px;
+  margin-top: 1px;
   transition: all .5s;
 }
 
@@ -602,15 +612,30 @@ footer#footer h2 {
 
 .shortcode-jumbotron {
   position: relative;
+  height: 600px;
+}
+
+.shortcode-jumbotron .background {
+  background-image: linear-gradient(0deg, #621C54 0%, #252c6f 100%);
+  margin: -50px 0 0 0;
+  height: 650px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
 }
 
 .shortcode-jumbotron .jumbotron {
-  background-image: linear-gradient(0deg, #252c6f 0%, #621C54 100%);
-  margin: -50px 0 0 0;
-  position: relative;
   height: 600px;
   color: #FFFFFF;
   padding: 100px 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  background: transparent;
 }
 
 .shortcode-jumbotron .grid {
@@ -624,62 +649,85 @@ footer#footer h2 {
   opacity: .1;
 }
 
-.shortcode-jumbotron .jumbotron svg {
-  display: block;
-  margin: 0 auto;
-  padding-top: 100px;
+.shortcode-jumbotron .curves {
+  background: url('../img/jumbotron_curves.svg') repeat bottom;
+  background-size: cover;
+  width: 100%;
+  height: 600px;
   position: absolute;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve {
-  stroke-width: 1px;
-  stroke-opacity: 0;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve path:nth-child(1) {
-  animation: curve 6s linear 1.2s infinite;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve path:nth-child(2) {
-  animation: curve 6s linear 2.4s infinite;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve path:nth-child(3) {
-  animation: curve 6s linear 3.6s infinite;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve path:nth-child(4) {
-  animation: curve 6s linear 4.8s infinite;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve path:nth-child(5) {
-  animation: curve 6s linear 5.0s infinite;
-}
-
-.shortcode-jumbotron .jumbotron svg .curve path:nth-child(6) {
-  animation: curve 6s linear 6.2s infinite;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
 }
 
 .shortcode-jumbotron .jumbotron .picture {
-  background: url('../img/jumbotron_left.png') no-repeat;
+  background: url('../img/jumbotron_left.svg') no-repeat;
   height: 450px;
   width: 413px;
   background-size: 413px 450px;
 }
 
-@keyframes curve {
-  0% {
-    transform: none;
-    stroke-opacity: 0;
-  }
-  50% {
-    transform: rotateX(360deg) scaleY(.8);
-    stroke-opacity: .4;
-  }
-  70% { /* transform: skewY(-2deg); */
-  }
-  100% {
-    transform: none;
-    stroke-opacity: 0;
-  }
+.shortcode-jumbotron .jumbotron .logo {
+  background: url('../img/logo.svg') no-repeat;
+  height: 100px;
+  width: 375px;
+  background-size: 375px 100px;
+  margin: auto;
+}
+
+.shortcode-jumbotron .btn {
+  margin-right: 14px;
+  height: 48px;
+  font-size: 20px;
+}
+
+.shortcode-jumbotron .btn i {
+  font-size: 24px;
+}
+
+.shortcode-jumbotron .btn .text {
+  display: inline-block;
+}
+
+.shortcode-jumbotron .btn .small {
+  font-family: "Ubuntu Regular";
+  font-size: 13px;
+}
+
+
+
+.shortcode-jumbotron .btn-default {
+  background: transparent;
+  color: #ffbb00;
+  border: solid 1px #ffbb00;
+  font-family: "Ubuntu Regular";
+
+}
+
+.shortcode-jumbotron .btn-primary {
+  background: #ffbb00;
+  border: solid 1px #ffbb00;
+  color: #FFFFFF;
+  font-family: "Ubuntu Medium";
+  padding: 2px 16px;
+
+}
+
+.shortcode-jumbotron .content {
+  font-size: 22px;
+  margin: 70px 0;
+  font-family: "Ubuntu Light";
+
+}
+
+.shortcode-jumbotron .content ul li {
+  list-style-type: none;
+}
+
+.shortcode-jumbotron .content ul li:before {
+  content: "\25AA";
+  color: #ffbb00;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
