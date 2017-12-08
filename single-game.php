@@ -32,7 +32,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-3"><strong><?php echo __("Players", "solarus");?></strong></div>
-                                            <div class="col-lg-9"><?php echo Core::get_post_meta('_players');?></div>
+                                            <div class="col-lg-9"><?php echo Core::get_terms('group_player');?></div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-3"><strong><?php echo __("Type", "solarus");?></strong></div>

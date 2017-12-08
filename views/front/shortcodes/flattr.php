@@ -1,0 +1,1 @@
+<div class="shortcode shortcode-flattr"></div>

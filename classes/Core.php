@@ -134,8 +134,7 @@ class Core
                 $content = Core::get_post_meta('_content_' . get_locale(), $p->ID);
                 $content = apply_filters('the_content', $content);
         }
-        $content = str_replace('<br />', '', $content);
-        $content = str_replace('<br>', '', $content);
+        $content = str_replace('</div><br />', '</div>', $content);
         if (empty($content)) {
             $content = __("Page not available in this language", "solarus");
         }
@@ -197,7 +196,7 @@ class Core
         if ($term == false) {
             return false;
         }
-        $current_url = Core::get_current_url();
+        $current_url = get_post_type_archive_link("game");
         $url_items = explode('?', $current_url);
         $current_url = $url_items[0];
         $params = http_build_query(array_merge($_GET, array($taxonomy => $term)));
@@ -444,6 +443,19 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_banner_title($atts = array(), $content)
+    {
+
+        $default_atts = array("title", "width");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/games_banner_title', $args);
+
+    } //EOM
+
     public function get_view_shortcode_container($atts = array(), $content)
     {
 
@@ -454,6 +466,32 @@ class Core
             'content' => $content
         );
         return Core::load_view('front/shortcodes/container', $args);
+
+    } //EOM
+
+    public function get_view_shortcode_container_fluid($atts = array(), $content)
+    {
+
+        $default_atts = array();
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/container_fluid', $args);
+
+    } //EOM
+
+    public function get_view_shortcode_flattr($atts = array(), $content)
+    {
+
+        $default_atts = array();
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/flattr', $args);
 
     } //EOM
 
@@ -469,6 +507,19 @@ class Core
             'p' => $p
         );
         return Core::load_view('front/shortcodes/game_sheet', $args);
+
+    } //EOM
+
+    public function get_view_shortcode_image($atts = array(), $content)
+    {
+
+        $default_atts = array("alt", "src");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/games_image', $args);
 
     } //EOM
 
@@ -490,19 +541,6 @@ class Core
             'posts' => $posts
         );
         return Core::load_view('front/shortcodes/games_thumbnail', $args);
-
-    } //EOM
-
-    public function get_view_shortcode_banner_title($atts = array(), $content)
-    {
-
-        $default_atts = array("title", "width");
-        $atts = $this->merge_shortcode_atts($default_atts, $atts);
-        $args = array(
-            'atts' => $atts,
-            'content' => $content
-        );
-        return Core::load_view('front/shortcodes/games_banner_title', $args);
 
     } //EOM
 
@@ -540,7 +578,32 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_paypal($atts = array(), $content)
+    {
 
+        $default_atts = array("name", "email", "currency");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/paypal', $args);
+
+    } //EOM
+
+
+    public function get_view_shortcode_text($atts = array(), $content)
+    {
+
+        $default_atts = array("type", "title", "icon");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/text', $args);
+
+    } //EOM
 
     public static function get_post_meta($meta = false, $id = false)
     {
@@ -796,7 +859,9 @@ class Core
         add_filter('gettext', array($this, 'get_text_translated'), 10, 3);
 
         // Shortcodes
+        add_shortcode('image', array($this, 'get_view_shortcode_image'));
         add_shortcode('container', array($this, 'get_view_shortcode_container'));
+        add_shortcode('container_fluid', array($this, 'get_view_shortcode_container_fluid'));
         add_shortcode('team_item', array($this, 'get_view_shortcode_team_item'));
         add_shortcode('jumbotron', array($this, 'get_view_shortcode_jumbotron'));
         add_shortcode('banner', array($this, 'get_view_shortcode_banner'));
@@ -805,6 +870,9 @@ class Core
         add_shortcode('banner_title', array($this, 'get_view_shortcode_banner_title'));
         add_shortcode('highlight', array($this, 'get_view_shortcode_highlight'));
         add_shortcode('latest_news', array($this, 'get_view_shortcode_latest_news'));
+        add_shortcode('text', array($this, 'get_view_shortcode_text'));
+        add_shortcode('paypal', array($this, 'get_view_shortcode_paypal'));
+        add_shortcode('flattr', array($this, 'get_view_shortcode_flattr'));
 
     } //EOM
 
