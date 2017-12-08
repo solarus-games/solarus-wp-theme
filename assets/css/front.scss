@@ -467,6 +467,36 @@ main#main #games article:nth-child(2) {
   margin-top: 14px;
 }
 
+main#main #games .pictures .pictures-item {
+  position: relative;
+  display: block;
+  outline: none;
+}
+
+main#main #games .pictures .pictures-item:hover .overlay {
+  background: transparent;
+}
+
+main#main #games .pictures .pictures-item i {
+  font-size: 60px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+  margin-top: 40px;
+}
+
+main#main #games .pictures .pictures-item .overlay {
+  background: rgba(0,0,0,.5);
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+  height: 100%;
+  transition: all .5s;
+  border-radius: 6px;
+}
+
 main#main #blog article {
   margin-top: 70px;
 }

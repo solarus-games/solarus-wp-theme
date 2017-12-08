@@ -63,7 +63,9 @@
                                 <div class="row">
                                     <?php if ($video_youtube):?>
                                         <div class="col-lg-3">
-                                            <a title="<?php echo $post->post_title;?>" href="https://youtu.be/<?php echo $video_youtube;?>?list=<?php echo $video_youtube;?>" data-toggle="fancybox" data-fancybox="gallery">
+                                            <a class="video pictures-item" title="<?php echo $post->post_title;?>" href="https://youtu.be/<?php echo $video_youtube;?>?list=<?php echo $video_youtube;?>" data-toggle="fancybox" data-fancybox="gallery">
+                                                <div class="overlay"></div>
+                                                <i class="fa fa-film"></i>
                                                 <img alt="<?php echo $post->post_title;?>" src="https://img.youtube.com/vi/<?php echo $video_youtube;?>/0.jpg"/>
                                             </a>
                                         </div>
