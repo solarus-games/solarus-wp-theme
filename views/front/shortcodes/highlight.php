@@ -1,5 +1,4 @@
-<div
-    class="shortcode shortcode-highlight<?php if ($atts["width"]): ?> col-lg-<?php echo $atts["width"]; ?><?php else: ?> col-lg-12<?php endif; ?>">
+<div class="shortcode shortcode-highlight<?php if ($atts["width"]): ?> col-lg-<?php echo $atts["width"]; ?><?php else: ?> col-lg-12<?php endif; ?>">
     <div class="block">
         <div class="row">
             <?php if ($atts['icon']): ?>

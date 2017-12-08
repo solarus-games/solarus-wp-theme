@@ -134,10 +134,11 @@ class Core
                 $content = Core::get_post_meta('_content_' . get_locale(), $p->ID);
                 $content = apply_filters('the_content', $content);
         }
+        $content = str_replace('<br />', '', $content);
+        $content = str_replace('<br>', '', $content);
         if (empty($content)) {
             $content = __("Page not available in this language", "solarus");
         }
-
         return $content;
 
     } //EOM
@@ -169,6 +170,22 @@ class Core
             $pageURL .= $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
         }
         return $pageURL;
+
+    } //EOM
+
+    public static function get_excerpt($p = false, $language = false)
+    {
+        if ($p == false) {
+            global $post;
+            $p = $post;
+        }
+        if ($language == false) {
+            $language = get_locale();
+        }
+        $content = Core::get_content($p, $language);
+        $excerpt = wp_kses_post( wp_trim_words($content, 20));
+
+        return $excerpt;
 
     } //EOM
 
@@ -502,6 +519,28 @@ class Core
 
     } //EOM
 
+    public function get_view_shortcode_latest_news($atts = array(), $content)
+    {
+
+        $default_atts = array("count", "width");
+        $atts = $this->merge_shortcode_atts($default_atts, $atts);
+        $args = array(
+            'post_type' => 'post'
+        );
+        if ($atts['count']) {
+            $args['posts_per_page'] = $atts['count'];
+        }
+        $posts = get_posts($args);
+        $args = array(
+            'posts' => $posts,
+            'atts' => $atts,
+            'content' => $content
+        );
+        return Core::load_view('front/shortcodes/latest_news', $args);
+
+    } //EOM
+
+
 
     public static function get_post_meta($meta = false, $id = false)
     {
@@ -760,6 +799,7 @@ class Core
         add_shortcode('games_thumbnail', array($this, 'get_view_shortcode_games_thumbnail'));
         add_shortcode('banner_title', array($this, 'get_view_shortcode_banner_title'));
         add_shortcode('highlight', array($this, 'get_view_shortcode_highlight'));
+        add_shortcode('latest_news', array($this, 'get_view_shortcode_latest_news'));
 
     } //EOM
 
